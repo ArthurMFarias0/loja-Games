@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthModule } from './auth/auth.module';
+import { AuthController } from './auth/controllers/auth.controller';
 import { CategoriaModule } from './categoria/categoria.module';
 import { Categoria } from './categoria/entities/categoria.entity';
 import { Produto } from './produto/entities/produto.entity';
@@ -19,7 +21,7 @@ import { UsuarioModule } from './usuario/usuario.module';
      entities: [Produto, Categoria, Usuario],
      synchronize: true
    }),
-   ProdutoModule, CategoriaModule, UsuarioModule
+   ProdutoModule, CategoriaModule, UsuarioModule, AuthModule
   ],
   controllers: [],
   providers: [],

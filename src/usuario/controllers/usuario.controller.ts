@@ -20,6 +20,7 @@ export class UsuarioController {
         return await this.usuarioService.create(usuario);
     }
 
+    @UseGuards(JwtAuthGuard)
     @Put('/atualizar')
     @HttpCode(HttpStatus.OK)
     async update(@Body() usuario: Usuario): Promise<Usuario> {
