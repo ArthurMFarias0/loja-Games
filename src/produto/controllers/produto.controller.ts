@@ -1,4 +1,5 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put, UseGuards } from "@nestjs/common";
+import { JwtAuthGuard } from "src/auth/guard/jwt-auth.guard";
 import { Produto } from "../entities/produto.entity";
 import { ProdutoService } from "../services/produto.service";
 
@@ -29,6 +30,7 @@ export class ProdutoController {
         return this.produtoService.findByDescricao(descricao);
     }
 
+    @UseGuards(JwtAuthGuard)
     @Post()
     @HttpCode(HttpStatus.OK)
     create(
@@ -38,6 +40,7 @@ export class ProdutoController {
         return this.produtoService.create(produto)
     }
 
+    @UseGuards(JwtAuthGuard)
     @Put()
     @HttpCode(HttpStatus.OK)
     update( 
@@ -47,6 +50,7 @@ export class ProdutoController {
         return this.produtoService.update(produto)
     }
 
+    @UseGuards(JwtAuthGuard)
     @Delete('/:id')
     @HttpCode(HttpStatus.NO_CONTENT)
     delete (@Param('id',ParseIntPipe)

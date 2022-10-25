@@ -4,6 +4,8 @@ import { CategoriaModule } from './categoria/categoria.module';
 import { Categoria } from './categoria/entities/categoria.entity';
 import { Produto } from './produto/entities/produto.entity';
 import { ProdutoModule } from './produto/produto.module';
+import { Usuario } from './usuario/entities/usuario.entity';
+import { UsuarioModule } from './usuario/usuario.module';
 
 @Module({
   imports: [
@@ -14,10 +16,10 @@ import { ProdutoModule } from './produto/produto.module';
      username: 'root',
      password: 'root',
      database: 'db_lojagames',
-     entities: [Produto, Categoria],
+     entities: [Produto, Categoria, Usuario],
      synchronize: true
    }),
-   ProdutoModule,CategoriaModule
+   ProdutoModule, CategoriaModule, UsuarioModule
   ],
   controllers: [],
   providers: [],
